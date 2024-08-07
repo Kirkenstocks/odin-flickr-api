@@ -1,0 +1,23 @@
+<div style="text-align: center">
+  <h1>Flickr Fetcher</h1>
+  <br><br>
+  <%= form_with url: root_path, method: :get, local: true do |form| %>
+    <div>
+      <%= label_tag :user_id, "Flickr ID" %><br>
+      <%= form.text_field :user_id %>
+    </div>
+    <br>
+    <div>
+      <%= submit_tag "Fetch Photos" %>
+    </div>
+  <% end %>
+
+  <% if @photos %>
+    <h2>Photos</h2>
+    <div>
+      <% @photos.each do |photo| %>
+        <%= image_tag Flickr.url(photo) %><br><br>
+      <% end %>
+    </div>
+  <% end %>
+</div>
